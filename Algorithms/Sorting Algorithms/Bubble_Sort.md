@@ -65,6 +65,128 @@ def bubbleSort(array):
 		i += 1
 		
 	return array
+	
+```
+### SOLUTION 2. BUBBLESORT in cpp
+```
+// C++ program for implementation of Bubble sort
+#include <bits/stdc++.h>
+using namespace std;
+
+//this function can swap two numbers
+ 
+void swap(int *x,int *y)
+{
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+ 
+// A function to implement bubble sort
+void bubbleSort(int arr[], int n)
+{
+    int i, j;
+    for (i = 0; i < n-1; i++)    
+     
+    // Last i elements are already in place
+    for (j = 0; j < n-i-1; j++)
+        if (arr[j] > arr[j+1])
+            swap(&arr[j], &arr[j+1]);
+}
+ 
+//function to print the array
+void Array_print(int arr[], int n)
+{
+    int i;
+    for (i = 0; i < size; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+ 
+// Driver code
+int main()
+{
+    
+    int n;
+    cout<<"Enter the size of the array"<<endl;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+      cin>>arr[i];
+    }
+    bubbleSort(arr, n);
+    cout<<"Sorted array: \n";
+    Array_print(arr, n);
+    return 0;
+}
+```
+
+
+### SOLUTION 2 in cpp: SPACE OPTIMISED APPROACH:
+
+```
+This approach is further optimised.
+Here we observe that if the array is not swapped we can stop it from performing further passes by setting the flag flag variable to false
+
+#include <bits/stdc++.h>
+using namespace std;
+void swap(int *x, int *y)
+{
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+ 
+
+void bubbleSort(int arr[], int n)
+{
+   bool flag;
+   int i, j;
+ 
+   for (i = 0; i < n-1; i++)
+   {
+     flag = 0;
+     for (j = 0; j < n-i-1; j++)
+     {
+        if (arr[j] > arr[j+1])
+        {
+           swap(&arr[j], &arr[j+1]);
+           flag = 1;
+        }
+     }
+ 
+    
+     if (flag==0)
+        break;
+   }
+}
+ 
+/* Function to print an array */
+void Array_print(int arr[], int size)
+{
+   
+    for (int i = 0; i < size; i++)
+        cout <<" "<< arr[i]<<" ";
+    
+}
+int main()
+{
+     
+    int n;
+    cout<<"Enter the size of the array"<<endl;
+    cin>>n;
+    int arr[n];
+    cout<<"Enter the values"<<endl;
+    for(int i=0;i<n;i++)
+    {
+      cin>>arr[i];
+    }
+    bubbleSort(arr, n);
+    cout<<"Sorted array:";
+    Array_print(arr, n);
+    return 0;
+}
 ```
 
 #### ⏲️ Time Complexities:
